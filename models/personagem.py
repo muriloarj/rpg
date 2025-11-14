@@ -20,9 +20,16 @@ class Personagem(Entidade):
         """
         raise NotImplementedError("Implementar cálculo de dano base do Personagem.")
 
-    def habilidade_especial(self) -> int:
+    def habilidade_especial(self, alvo: Entidade | None = None) -> tuple[int, int]:
         """
-        Deve retornar dano especial (ou 0 se indisponível).
-        (ex.: consumir self._atrib.mana e aplicar bônus de dano)
+        Deve retornar uma tupla (dano_especial, custo_mana).
+        Este método é sobrescrito pelas subclasses (Guerreiro, Mago).
         """
-        raise NotImplementedError("Implementar habilidade especial do Personagem.")
+        # Como este é o método da classe base, ele retorna 0, forçando o polimorfismo nas subclasses.
+        print(f"{self.nome} (Classe Base) não possui habilidade especial definida.")
+        return 0, 0 
+    
+    def ganhar_xp(self, xp_ganho: int) -> None:
+        """Adiciona XP e verifica se deve subir de nível."""
+        self.xp += xp_ganho
+        print(f"🎉 {self.nome} ganhou {xp_ganho} XP!")
