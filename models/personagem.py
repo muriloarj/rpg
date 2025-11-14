@@ -53,7 +53,7 @@ class Personagem(Entidade):
         # Atributos sobem de maneira básica
         self._atrib.vida += 10
         self._atrib.mana += 5
-        self._attrib.ataque += 2
+        self._atrib.ataque += 2
         self._atrib.defesa += 2
 
         print(f"{self.nome} subiu para o nível {self.nivel}!")
